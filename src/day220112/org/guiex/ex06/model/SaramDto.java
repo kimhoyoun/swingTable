@@ -1,22 +1,28 @@
-package day220112.org.guiex.ex06;
+package day220112.org.guiex.ex06.model;
 
+import java.io.Externalizable;
+import java.io.IOException;
+import java.io.ObjectInput;
+import java.io.ObjectOutput;
 import java.util.Vector;
 
-public class SaramDto {
+public class SaramDto implements Externalizable{
 	private int idx;
 	private String name;
 	private String email;
 	private String phone;
+	private String mf;
 	
 	public SaramDto() {
-		this(0,"","","");
+		this(0,"","","", "");
 	}
 	
-	public SaramDto(int idx, String name, String email, String phone) {
+	public SaramDto(int idx, String name, String email, String phone, String mf) {
 		this.idx = idx;
 		this.name = name;
 		this.email = email;
 		this.phone = phone;
+		this.mf = mf;
 	}
 
 	public int getIdx() {
@@ -51,6 +57,14 @@ public class SaramDto {
 		this.phone = phone;
 	}
 
+	public String getMf() {
+		return mf;
+	}
+
+	public void setMf(String mf) {
+		this.mf = mf;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -79,12 +93,32 @@ public class SaramDto {
 		vector.add(name);
 		vector.add(email);
 		vector.add(phone);
+		vector.add(mf);
 		
 		return vector;
 	}
 	@Override
 	public String toString() {
-		return "[ "+idx + "\t" + name + "\t" + email + "\t" + phone+" ]";
+		return "[ "+idx + "\t" + name + "\t" + email + "\t" + phone+ "\t" + mf+" ]";
+	}
+
+	@Override
+	public void writeExternal(ObjectOutput out) throws IOException {
+		out.write(idx);
+		out.writeUTF(name);
+		out.writeUTF(email);
+		out.writeUTF(phone);
+		out.writeUTF(mf);
+		
+	}
+
+	@Override
+	public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
+		idx = in.read();
+		name = in.readUTF();
+		email = in.readUTF();
+		phone = in.readUTF();
+		mf = in.readUTF();
 	}
 	
 	
