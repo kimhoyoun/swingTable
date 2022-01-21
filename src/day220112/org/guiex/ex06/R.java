@@ -14,6 +14,7 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 import day220112.org.guiex.ex06.model.SaramDao;
+import day220112.org.guiex.ex06.model.SaramDaoDB;
 import day220112.org.guiex.ex06.model.SaramDto;
 
 public abstract class R {
@@ -31,6 +32,7 @@ public abstract class R {
 	public static JPanel picturePane;
 	
 	public static final SaramDao dao = new SaramDao();
+	public static final SaramDaoDB daoDB = new SaramDaoDB();
 	
 	public static final JTextField txtFld1 = new JTextField(10);
 	public static final JTextField txtFld2 = new JTextField(10);
@@ -62,7 +64,7 @@ public abstract class R {
 	
 	public static final JRadioButton rb1 = new JRadioButton("남자");
 	public static final JRadioButton rb2 = new JRadioButton("여자");
-	public static final JRadioButton rb3 = new JRadioButton("Table View");
+	public static final JRadioButton rb3 = new JRadioButton("Table View",true);
 	public static final JRadioButton rb4 = new JRadioButton("Picture View");
 	
 	

@@ -11,18 +11,18 @@ public class SaramDto implements Externalizable{
 	private String name;
 	private String email;
 	private String phone;
-	private String mf;
+	private String gender;
 	
 	public SaramDto() {
 		this(0,"","","", "");
 	}
 	
-	public SaramDto(int idx, String name, String email, String phone, String mf) {
+	public SaramDto(int idx, String name, String email, String phone, String gender) {
 		this.idx = idx;
 		this.name = name;
 		this.email = email;
 		this.phone = phone;
-		this.mf = mf;
+		this.gender = gender;
 	}
 
 	public int getIdx() {
@@ -57,12 +57,12 @@ public class SaramDto implements Externalizable{
 		this.phone = phone;
 	}
 
-	public String getMf() {
-		return mf;
+	public String getGender() {
+		return gender;
 	}
 
-	public void setMf(String mf) {
-		this.mf = mf;
+	public void setGender(String gender) {
+		this.gender = gender;
 	}
 
 	@Override
@@ -93,13 +93,13 @@ public class SaramDto implements Externalizable{
 		vector.add(name);
 		vector.add(email);
 		vector.add(phone);
-		vector.add(mf);
+		vector.add(gender);
 		
 		return vector;
 	}
 	@Override
 	public String toString() {
-		return "[ "+idx + "\t" + name + "\t" + email + "\t" + phone+ "\t" + mf+" ]";
+		return "[ "+idx + "\t" + name + "\t" + email + "\t" + phone+ "\t" + gender+" ]";
 	}
 
 	@Override
@@ -108,7 +108,7 @@ public class SaramDto implements Externalizable{
 		out.writeUTF(name);
 		out.writeUTF(email);
 		out.writeUTF(phone);
-		out.writeUTF(mf);
+		out.writeUTF(gender);
 		
 	}
 
@@ -118,7 +118,7 @@ public class SaramDto implements Externalizable{
 		name = in.readUTF();
 		email = in.readUTF();
 		phone = in.readUTF();
-		mf = in.readUTF();
+		gender = in.readUTF();
 	}
 	
 	

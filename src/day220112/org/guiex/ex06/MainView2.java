@@ -10,7 +10,7 @@ import static day220112.org.guiex.ex06.R.cb2;
 import static day220112.org.guiex.ex06.R.cb3;
 import static day220112.org.guiex.ex06.R.cb4;
 import static day220112.org.guiex.ex06.R.columnNames;
-import static day220112.org.guiex.ex06.R.dao;
+import static day220112.org.guiex.ex06.R.daoDB;
 import static day220112.org.guiex.ex06.R.deleteBtn;
 import static day220112.org.guiex.ex06.R.finishBtn;
 import static day220112.org.guiex.ex06.R.inputBtn;
@@ -52,9 +52,9 @@ import day220112.org.guiex.ex06.tableView.BottomPane;
 import day220112.org.guiex.ex06.tableView.LeftPane;
 import day220112.org.guiex.ex06.tableView.TableSet;
 
-public class MainView extends MyJFrame {
+public class MainView2 extends MyJFrame {
 	
-	public MainView() {
+	public MainView2() {
 		super("MainView", 640, 480);
 	}
 
@@ -89,7 +89,7 @@ public class MainView extends MyJFrame {
 
 		private void displayAll() {
 			model.setDataVector(null, columnNames);
-			Vector<Vector> saramList = dao.selectAll();
+			Vector<Vector> saramList = daoDB.selectAll();
 			for (Vector vector : saramList) {
 				model.addRow(vector);
 			}
@@ -119,17 +119,17 @@ public class MainView extends MyJFrame {
 						
 						String mf = manwoman;
 						// TableModel에 반영해주기
-						// dao에 저장 후
+						// daoDB에 저장 후
 						// list를 다시 그려준다.
 
-						boolean in = dao.insert(new SaramDto(0, name, email, phone, mf));
+						boolean in = daoDB.insert(new SaramDto(0, name, email, phone, mf));
 						if (in) {
-							JOptionPane.showMessageDialog(MainView.this, "입력 완료!");
+							JOptionPane.showMessageDialog(MainView2.this, "입력 완료!");
 							// list를 다시 그려 준다.
 							// list를 그려주는 displayList 메소드
 							displayAll();
 						} else {
-							JOptionPane.showMessageDialog(MainView.this, "정보를 전부 입력해주세요!");
+							JOptionPane.showMessageDialog(MainView2.this, "정보를 전부 입력해주세요!");
 						}
 					}
 
@@ -144,13 +144,13 @@ public class MainView extends MyJFrame {
 						txtFld2.setText("");
 						txtFld3.setText("");
 						txtFld4.setText("");
-						Vector<Vector> vector = dao.search(new SaramDto(0, name, null, null, null));
+						Vector<Vector> vector = daoDB.search(new SaramDto(0, name, null, null, null));
 
 						if (vector != null) {
-							JOptionPane.showMessageDialog(MainView.this, "검색된 정보를 출력합니다!");
+							JOptionPane.showMessageDialog(MainView2.this, "검색된 정보를 출력합니다!");
 							displayList(vector);
 						} else {
-							JOptionPane.showMessageDialog(MainView.this, "해당 정보가 없습니다!");
+							JOptionPane.showMessageDialog(MainView2.this, "해당 정보가 없습니다!");
 						}
 
 					}
@@ -176,16 +176,16 @@ public class MainView extends MyJFrame {
 							idx = Integer.parseInt(id);
 						} catch (NumberFormatException r) {
 							idx = 0;
-							JOptionPane.showMessageDialog(MainView.this, "ID는 필수사항이며, 숫자만 입력하세요!");
+							JOptionPane.showMessageDialog(MainView2.this, "ID는 필수사항이며, 숫자만 입력하세요!");
 						}
 
-						Vector vector = dao.modify(new SaramDto(idx, name, email, phone, mf));
+						boolean flag = daoDB.update(new SaramDto(idx, name, email, phone, mf));
 
-						if (vector != null) {
-							JOptionPane.showMessageDialog(MainView.this, "수정된 정보를 출력합니다!");
+						if (flag) {
+							JOptionPane.showMessageDialog(MainView2.this, "수정된 정보를 출력합니다!");
 							displayAll();
 						} else {
-							JOptionPane.showMessageDialog(MainView.this, "정보가 잘못되어 수정할 수 없습니다!");
+							JOptionPane.showMessageDialog(MainView2.this, "정보가 잘못되어 수정할 수 없습니다!");
 						}
 					}
 				});
@@ -209,16 +209,16 @@ public class MainView extends MyJFrame {
 							idx = Integer.parseInt(id);
 						} catch (NumberFormatException r) {
 							idx = 0;
-							JOptionPane.showMessageDialog(MainView.this, "ID는 필수사항이며, 숫자만 입력하세요!");
+							JOptionPane.showMessageDialog(MainView2.this, "ID는 필수사항이며, 숫자만 입력하세요!");
 						}
 
-						boolean del = dao.delete(new SaramDto(idx, name, email, phone, mf));
+						boolean del = daoDB.delete(new SaramDto(idx, name, email, phone, mf));
 
 						if (del) {
-							JOptionPane.showMessageDialog(MainView.this, "삭제 되었습니다!");
+							JOptionPane.showMessageDialog(MainView2.this, "삭제 되었습니다!");
 							displayAll();
 						} else {
-							JOptionPane.showMessageDialog(MainView.this, "삭제할 수 없습니다.");
+							JOptionPane.showMessageDialog(MainView2.this, "삭제할 수 없습니다.");
 						}
 
 					}
@@ -228,7 +228,7 @@ public class MainView extends MyJFrame {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						JOptionPane.showMessageDialog(MainView.this, "goodbye");
+						JOptionPane.showMessageDialog(MainView2.this, "goodbye");
 						dispose();
 						System.exit(0);
 					}
@@ -399,6 +399,6 @@ public class MainView extends MyJFrame {
 	}
 
 	public static void main(String[] args) {
-		new MainView().setVisible(true);
+		new MainView2().setVisible(true);
 	}
 }

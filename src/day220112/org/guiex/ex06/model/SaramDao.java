@@ -19,9 +19,9 @@ public class SaramDao {
 
 	// 뷰에 있으면 안되니까 model로 옮김
 	static {
-		saramList.add(new SaramDto(1, "kim", "kim@naver.com", "010-1111-1111","man"));
-		saramList.add(new SaramDto(2, "lee", "lee@naver.com", "010-2222-2222","woman"));
-		saramList.add(new SaramDto(3, "park", "park@naver.com", "010-3333-3333","man"));
+//		saramList.add(new SaramDto(1, "kim", "kim@naver.com", "010-1111-1111","man"));
+//		saramList.add(new SaramDto(2, "lee", "lee@naver.com", "010-2222-2222","woman"));
+//		saramList.add(new SaramDto(3, "park", "park@naver.com", "010-3333-3333","man"));
 	}
 	{
 		read();

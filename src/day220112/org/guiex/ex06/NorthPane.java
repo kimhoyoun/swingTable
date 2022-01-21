@@ -18,7 +18,6 @@ public class NorthPane extends JPanel {
 		
 		radio.add(rb3);
 		radio.add(rb4);
-		
 		this.add(radio);
 	}
 }

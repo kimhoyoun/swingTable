@@ -7,5 +7,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="C:/Users/hoyou/OneDrive/바탕 화면/수업자료/수업(국비)/Java/work/myjframe.jar"/>
+	<classpathentry kind="lib" path="C:/Users/hoyou/OneDrive/바탕 화면/수업자료/수업(국비)/Java/jar/mariadb-java-client-2.4.4.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
